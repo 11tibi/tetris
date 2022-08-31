@@ -10,8 +10,8 @@ interface BoardProps {
 }
 
 export const BOARD: BoardProps = {
-    SQUARE_WIDTH: 25,
-    SQUARE_HEIGHT: 25,
+    SQUARE_WIDTH: 30,
+    SQUARE_HEIGHT: 30,
     SQUARES_X: 10,
     SQUARES_Y:18
 }

@@ -30,7 +30,7 @@ export class Board {
         }
         x = window.innerWidth / 2 - (BOARD.SQUARE_WIDTH * BOARD.SQUARES_X) / 2;
         y = window.innerHeight / 2 - (BOARD.SQUARE_HEIGHT * BOARD.SQUARES_Y) / 2;
-        let y_end: number = window.innerHeight / 2 - 225 + 450;
+        let y_end: number = window.innerHeight / 2 + (BOARD.SQUARES_Y * BOARD.SQUARE_HEIGHT) / 2;
         for (let i = 0; i < BOARD.SQUARES_X; i++) {
             this.ctx.moveTo(x, y);
             this.ctx.lineTo(x, y_end);
