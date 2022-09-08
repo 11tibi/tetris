@@ -5,8 +5,7 @@ window.onload = window.onresize = function () {
     let ctx: CanvasRenderingContext2D = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     let board = new Board(ctx);
-    board.draw();
+    board.run();
 }
 
