@@ -18,7 +18,6 @@ export class Block {
     private readonly type: BlockType;
     private readonly colorType: string;
     private rotation: number;
-    private readonly figures: Array<Array<Array<number>>>;
 
 
     constructor(ctx: CanvasRenderingContext2D, x: number, y: number) {
@@ -28,13 +27,6 @@ export class Block {
         this.type = BlockType[BlockType[Math.floor(Math.random() * Object.keys(BlockType).length / 2)]];
         this.colorType = ColorType[Math.floor(Math.random() * ColorType.length)];
         this.rotation = 0;
-        this.figures = [
-            [[1, 5, 9, 13], [4, 5, 6, 7]],
-            [[1, 2, 5, 9], [0, 4, 5, 6], [1, 5, 9, 8], [4, 5, 6, 10]],
-            [[1, 2, 6, 10], [5, 6, 7, 9], [2, 6, 10, 11], [3, 5, 6, 7]],
-            [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]],
-            [[1, 2, 5, 6]],
-        ];
     }
 
     public draw(): void {
@@ -42,7 +34,7 @@ export class Block {
          * Draw the current block
          */
         this.ctx.fillStyle = this.colorType;
-        const currFigure: any = this.figures[this.type][this.rotation % (this.figures[this.type].length)];
+        const currFigure: any = BOARD.FIGURES[this.type][this.rotation % (BOARD.FIGURES[this.type].length)];
         for(let i=0; i<4; i++) {
             for(let j=0; j<4; j++) {
                 if (currFigure.includes(i * 4 + j)) {
@@ -59,7 +51,7 @@ export class Block {
          * Clear the current block
          */
         this.ctx.fillStyle = "#1f1f1f";
-        const currFigure: any = this.figures[this.type][this.rotation % (this.figures[this.type].length)];
+        const currFigure: any = BOARD.FIGURES[this.type][this.rotation % (BOARD.FIGURES[this.type].length)];
         for(let i=0; i<4; i++) {
             for(let j=0; j<4; j++) {
                 if (currFigure.includes(i * 4 + j)) {
@@ -72,6 +64,9 @@ export class Block {
     }
 
     private drop(): void {
+        /**
+         * Drop the piece
+         */
         while (!this.checkCollision()) {
             this.Y++;
         }
@@ -99,6 +94,8 @@ export class Block {
             if (this.checkCollision()) {
                 this.X--;
             }
+        } else {
+            throw new Error('"side" must be left or right');
         }
 
     }
@@ -116,7 +113,7 @@ export class Block {
     }
 
     public checkCollision(): boolean {
-        const currFigure: any = this.figures[this.type][this.rotation % (this.figures[this.type].length)];
+        const currFigure: any = BOARD.FIGURES[this.type][this.rotation % (BOARD.FIGURES[this.type].length)];
         for (let i=0; i<4; i++) {
             for (let j=0; j<4; j++) {
                 if (currFigure.includes(i * 4 + j)) {
