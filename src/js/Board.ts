@@ -28,7 +28,8 @@ export class Board {
             }
         }
         this.score = 0;
-        this.gamePhase = GamePhase.PLAY
+        this.drawScore();
+        this.gamePhase = GamePhase.PLAY;
     }
 
     public draw(): void {
@@ -52,6 +53,13 @@ export class Board {
                 }
             }
         }
+    }
+
+    private drawScore(): void {
+        this.ctx.clearRect(BOARD.BOARD_START_X, BOARD.BOARD_START_Y - 60, BOARD.SQUARE_WIDTH * BOARD.SQUARES_X, 50);
+        this.ctx.fillStyle = "#AAA";
+        this.ctx.font = "50px Arial";
+        this.ctx.fillText(`Score ${this.score}`, BOARD.BOARD_START_X, BOARD.BOARD_START_Y - 20);
     }
 
     public checkCollision(): boolean {
@@ -127,6 +135,7 @@ export class Board {
             case 3: this.score += 300; break;
             case 4: this. score += 1200; break;
         }
+        this.drawScore();
     }
 
     public run(): void {
