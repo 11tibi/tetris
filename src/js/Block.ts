@@ -8,14 +8,12 @@ enum BlockType {
     SKEW
 }
 
-let ColorType = ["#0341AE", "#72CB3B", "#FFD500", "#FF971C", "#FF3213"];
-
 export class Block {
     private readonly ctx: CanvasRenderingContext2D;
     private X: number;
     private Y: number;
     private readonly type: BlockType;
-    private readonly colorType: string;
+    private readonly colorType: number;
     private rotation: number;
 
     constructor(ctx: CanvasRenderingContext2D, x: number, y: number) {
@@ -23,7 +21,7 @@ export class Block {
         this.X = x;
         this.Y = y;
         this.type = BlockType[BlockType[Math.floor(Math.random() * Object.keys(BlockType).length / 2)]];
-        this.colorType = ColorType[Math.floor(Math.random() * ColorType.length)];
+        this.colorType = Math.floor(Math.random() * BOARD.COLOR_TYPE.length);
         this.rotation = 0;
     }
 
@@ -55,11 +53,15 @@ export class Block {
         return this.rotation;
     }
 
+    public getColorType(): number {
+        return this.colorType;
+    }
+
     public draw(): void {
         /**
          * Draw the current block
          */
-        this.ctx.fillStyle = this.colorType;
+        this.ctx.fillStyle = BOARD.COLOR_TYPE[this.colorType];
         const currFigure: any = BOARD.FIGURES[this.type][this.rotation % (BOARD.FIGURES[this.type].length)];
         for(let i=0; i<4; i++) {
             for(let j=0; j<4; j++) {
