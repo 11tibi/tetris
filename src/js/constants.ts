@@ -12,7 +12,9 @@ interface BoardProps {
     // y coordinates from where the grid start
     BOARD_START_Y: number,
     // Shapes that the figures can take
-    FIGURES: Array<Array<Array<number>>>
+    FIGURES: Array<Array<Array<number>>>,
+    // Hex value of the colors that the blocks can take
+    COLOR_TYPE: Array<string>
 }
 
 export const BOARD: BoardProps = {
@@ -28,5 +30,6 @@ export const BOARD: BoardProps = {
         [[1, 2, 6, 10], [5, 6, 7, 9], [2, 6, 10, 11], [3, 5, 6, 7]],
         [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]],
         [[1, 2, 5, 6]],
-    ]
+    ],
+    COLOR_TYPE: ["#0341AE", "#72CB3B", "#FFD500", "#FF971C", "#FF3213"]
 }
