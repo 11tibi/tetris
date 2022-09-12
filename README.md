@@ -6,6 +6,8 @@ A tetris game built with typescript.
 
 <img src="img/tetris.gif" alt="Tetris game gif" title="tetris">
 
+Live demo https://11tibi.github.io/tetris/
+
 # Setup
 
 ---
