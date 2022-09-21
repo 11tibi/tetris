@@ -11,7 +11,7 @@ Run
 
 ```
 npm i
-npm run dev
+npx webpack
 ```
 
 Open ```src/index.html``` in a browser.

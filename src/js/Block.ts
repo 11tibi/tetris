@@ -1,4 +1,4 @@
-import {BOARD} from "./constants.js";
+import {BOARD} from "./constants";
 
 enum BlockType {
     STRAIGHT,

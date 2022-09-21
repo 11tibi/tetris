@@ -1,4 +1,4 @@
-import {Board} from './Board.js';
+import {Board} from './Board';
 
 window.onload = function () {
     let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('canvas');

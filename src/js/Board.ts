@@ -1,5 +1,5 @@
-import {BOARD} from "./constants.js";
-import {Block} from "./Block.js";
+import {BOARD} from "./constants";
+import {Block} from "./Block";
 
 enum GamePhase {
     PLAY,
